@@ -18,13 +18,21 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  getDocuments()
+  const allDocuments = getDocuments()
+  console.log("All Documents in Layout:", allDocuments);
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        {
+          allDocuments.map(doc => (
+            <div key={doc.id}>
+              <h1>{doc.title}</h1>
+            </div>
+          ))
+        }
       </body>
     </html>
   );
